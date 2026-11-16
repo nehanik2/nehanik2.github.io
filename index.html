@@ -3,490 +3,285 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Neha Nikam – AI Engineer</title>
+<title>Neha Nikam | AI Engineer</title>
+<meta name="description" content="Neha Nikam: AI engineer building agentic systems that are safe to run in production. MS in AI at Boston University, 4+ years of backend engineering at Barclays." />
+<meta name="theme-color" content="#FAFAF7" />
+<meta property="og:title" content="Neha Nikam | AI Engineer" />
+<meta property="og:description" content="Agentic AI systems, runtime guardrails, and production backend engineering. MS in AI, Boston University. Ex-Barclays." />
+<meta property="og:url" content="https://nehanik2.github.io/" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2315805C'/><text x='50%' y='60%' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23ffffff'>nn</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0a0c10;
-    --bg2: #10141c;
-    --bg3: #161b26;
-    --card: #131720;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.13);
-    --text: #e8eaf0;
-    --muted: #7a8299;
-    --accent: #4fffb0;
-    --accent2: #00c8ff;
-    --accent3: #b48fff;
-    --glow: rgba(79,255,176,0.12);
-    --glow2: rgba(0,200,255,0.10);
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --border: #E7E8E4;
+    --border2: #D8DAD6;
+    --text: #1D2124;
+    --muted: #5C6368;
+    --dim: #868C91;
+    --mint: #15805C;
+    --mint-hover: #106B4C;
+    --mint-light: #BDEBD6;
+    --mint-tint: #E6F6EE;
+    --mint-ink: #0F5F44;
+    --coral: #FF8A6B;
+    --coral-tint: #FFEDE6;
+    --coral-ink: #9A3F22;
   }
 
-  html { scroll-behavior: smooth; }
-
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', system-ui, sans-serif;
     font-weight: 300;
     line-height: 1.7;
-    min-height: 100vh;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
+  a { color: inherit; }
+  ::selection { background: var(--mint-light); }
 
-  /* ── NAV ── */
+  /* soft background */
+  .grid-bg {
+    position: absolute; inset: 0 0 auto 0; height: 110vh; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(29,33,36,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29,33,36,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 70% 0%, #000 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 70% 0%, #000 20%, transparent 70%);
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+  .blob1 { width: 520px; height: 520px; background: rgba(189,235,214,0.55); top: -180px; right: -140px; }
+  .blob2 { width: 260px; height: 260px; background: rgba(255,138,107,0.12); top: 340px; right: 18%; }
+
+  /* nav */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 2.5rem;
-    background: rgba(10,12,16,0.75);
+    padding: 1rem 2.5rem;
+    background: rgba(250,250,247,0.82);
     backdrop-filter: blur(14px);
-    border-bottom: 0.5px solid var(--border);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
   }
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.9rem;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-decoration: none;
+  .logo { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.35rem; color: var(--mint); text-decoration: none; line-height: 1; }
+  .logo span { color: var(--coral); font-style: normal; }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; font-size: 0.88rem; color: var(--muted); transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-cta {
+    font-family: 'DM Mono', monospace; font-size: 0.75rem !important;
+    padding: 0.45rem 0.95rem; border-radius: 6px; background: var(--text); color: #fff !important;
   }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
+  .nav-cta:hover { background: var(--mint); }
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 7rem 2.5rem 4rem;
-    max-width: 960px; margin: 0 auto;
-    position: relative;
+  main { position: relative; z-index: 1; overflow-x: clip; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 2.5rem; position: relative; }
+
+  /* hero */
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 6rem; padding-bottom: 4rem; }
+  .status {
+    display: inline-flex; max-width: 100%; line-height: 1.5; align-items: center; gap: 10px; align-self: flex-start;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.04em;
+    color: var(--coral-ink); padding: 0.42rem 0.95rem;
+    background: var(--coral-tint); border: 1px solid rgba(255,138,107,0.35); border-radius: 999px; margin-bottom: 2rem;
   }
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--accent);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .hero-tag::before {
-    content: '';
-    display: block; width: 32px; height: 1px;
-    background: var(--accent);
-  }
+  .dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); animation: ping 2s infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(255,138,107,0.55);} 70% { box-shadow: 0 0 0 9px rgba(255,138,107,0);} 100% { box-shadow: 0 0 0 0 rgba(255,138,107,0);} }
   h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 1.08;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.4rem;
+    font-family: 'DM Serif Display', serif; font-weight: 400;
+    font-size: clamp(2.6rem, 6.4vw, 5rem); line-height: 1.06; letter-spacing: -0.02em; max-width: 15ch;
   }
-  h1 em {
-    font-style: italic;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 540px;
-    margin: 1.4rem 0 2.4rem;
-    font-weight: 300;
-  }
-  .hero-ctas {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-  }
+  h1 em { font-style: italic; color: var(--mint); }
+  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 600px; margin: 1.6rem 0 2.4rem; }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+  .ctas { display: flex; gap: 0.8rem; flex-wrap: wrap; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 0.65rem 1.5rem;
-    border-radius: 4px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
-    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; padding: 0.78rem 1.5rem; border-radius: 6px;
+    font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.03em; font-weight: 500;
+    text-decoration: none; transition: all .2s; border: 1px solid transparent;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: #050a07;
-    border: none;
+  .btn-primary { background: var(--mint); color: #fff; }
+  .btn-primary:hover { background: var(--mint-hover); transform: translateY(-1px); }
+  .btn-ghost { background: var(--surface); border-color: var(--border2); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--mint); color: var(--mint); }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; margin-top: 3.5rem; padding-top: 1.6rem;
+    border-top: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: 0.76rem; color: var(--dim);
   }
-  .btn-primary:hover { background: #6dffbf; }
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 0.5px solid var(--border2);
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-meta b { color: var(--text); font-weight: 500; }
 
-  /* ── GRID BG ── */
-  .grid-bg {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-  .glow-orb {
-    position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0;
-  }
-  .orb1 { width: 420px; height: 420px; background: var(--glow); top: -60px; right: -80px; }
-  .orb2 { width: 320px; height: 320px; background: var(--glow2); bottom: 10%; left: -60px; }
+  /* sections */
+  section { padding: 5.5rem 0; }
+  section.alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; color: var(--mint); text-transform: uppercase; margin-bottom: 0.8rem; }
+  h2 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(1.9rem, 3.6vw, 2.7rem); letter-spacing: -0.01em; margin-bottom: 2.6rem; line-height: 1.15; }
+  h2 em { font-style: italic; color: var(--mint); }
 
-  /* ── SECTION ── */
-  section {
-    position: relative; z-index: 1;
-    max-width: 960px; margin: 0 auto;
-    padding: 5rem 2.5rem;
-  }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-  h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 400;
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.01em;
-  }
+  /* about */
+  .about { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: start; }
+  .about p { color: var(--muted); font-size: 1.03rem; margin-bottom: 1.1rem; }
+  .about p strong { color: var(--text); font-weight: 500; }
+  .focus { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.6rem; }
+  .focus h3 { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 500; margin-bottom: 0.8rem; }
+  .focus ul { list-style: none; }
+  .focus li { display: grid; grid-template-columns: 30px 1fr; align-items: start; font-size: 0.95rem; font-weight: 400; padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+  .focus li:last-child { border-bottom: none; }
+  .focus li span { color: var(--mint); font-family: 'DM Mono', monospace; font-size: 0.78rem; padding-top: 3px; }
+  .focus li small { display: block; color: var(--muted); font-size: 0.83rem; font-weight: 300; }
 
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    align-items: start;
+  /* projects */
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.7rem 1.8rem;
+    position: relative; overflow: hidden; transition: border-color .2s, transform .2s, box-shadow .2s; display: flex; flex-direction: column;
   }
-  .about-text { font-size: 1rem; color: var(--muted); line-height: 1.85; }
-  .about-text strong { color: var(--text); font-weight: 500; }
-  .stat-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  }
-  .stat-card {
-    background: var(--card);
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-    padding: 1.2rem;
-  }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    color: var(--accent);
-  }
-  .stat-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+  .card:hover { border-color: var(--mint-light); transform: translateY(-2px); box-shadow: 0 10px 30px -18px rgba(21,128,92,0.35); }
+  .card.wide { grid-column: 1 / -1; }
+  .card.featured { background: linear-gradient(135deg, var(--mint-tint), var(--surface) 65%); border-color: var(--mint-light); }
+  .kicker { align-self: flex-start; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.8rem; }
+  .kicker.spark { color: var(--coral-ink); background: var(--coral-tint); padding: 2px 9px; border-radius: 4px; }
+  .card h3 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.45rem; margin-bottom: 0.6rem; }
+  .card.featured h3 { font-size: 1.9rem; }
+  .card p { font-size: 0.93rem; color: var(--muted); margin-bottom: 1rem; max-width: 72ch; }
+  .metrics { display: flex; gap: 2rem; flex-wrap: wrap; margin: 0.2rem 0 1.2rem; }
+  .metric b { display: block; font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.7rem; color: var(--mint); line-height: 1.1; }
+  .metric small { font-size: 0.76rem; color: var(--muted); }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; margin-bottom: 1.1rem; }
+  .chip { font-family: 'DM Mono', monospace; font-size: 0.68rem; padding: 2px 9px; border-radius: 4px; background: var(--mint-tint); color: var(--mint-ink); }
+  .links { display: flex; gap: 1.2rem; }
+  .links a { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--mint); text-decoration: none; font-weight: 500; }
+  .links a:hover { color: var(--coral-ink); }
+  .more { margin-top: 1.6rem; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); }
+  .more a { color: var(--mint); text-decoration: none; }
+  .more a:hover { color: var(--coral-ink); }
 
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-  .skill-group {
-    background: var(--card);
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-    padding: 1.3rem 1.4rem;
-  }
-  .skill-group-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    color: var(--accent2);
-    text-transform: uppercase;
-    margin-bottom: 0.9rem;
-  }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag {
-    font-size: 0.72rem;
-    padding: 3px 10px;
-    border-radius: 3px;
-    font-family: 'DM Mono', monospace;
-    background: rgba(255,255,255,0.04);
-    border: 0.5px solid var(--border2);
-    color: var(--text);
+  /* experience */
+  .exp { display: grid; grid-template-columns: 170px 1fr; gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--border); }
+  .exp:last-child { border-bottom: 1px solid var(--border); }
+  .exp-date { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--dim); }
+  .exp-org { font-size: 0.92rem; color: var(--mint); font-weight: 500; margin-top: 4px; }
+  .exp h3 { font-size: 1.08rem; font-weight: 500; margin-bottom: 0.7rem; }
+  .exp ul { list-style: none; }
+  .exp li { font-size: 0.93rem; color: var(--muted); margin-bottom: 0.45rem; padding-left: 1.2rem; position: relative; }
+  .exp li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--mint-light); border: 1px solid var(--mint); }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .skill { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1.4rem; }
+  .skill h3 { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 500; margin-bottom: 0.9rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 0.72rem; padding: 3px 9px; border-radius: 4px; background: var(--surface); border: 1px solid var(--border2); color: var(--text); }
+
+  /* contact */
+  .contact { background: var(--text); color: #fff; border-radius: 18px; padding: 3.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; overflow: hidden; }
+  .contact::after { content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%; background: rgba(21,128,92,0.45); filter: blur(80px); top: -120px; right: -80px; pointer-events: none; }
+  .contact > * { position: relative; z-index: 1; }
+  .contact .label { color: var(--mint-light); }
+  .contact h2 { margin-bottom: 1rem; color: #fff; }
+  .contact h2 em { color: var(--mint-light); }
+  .contact p { color: #B7BDC1; }
+  .clinks { display: flex; flex-direction: column; gap: 0.8rem; }
+  .clink { display: flex; align-items: center; gap: 14px; text-decoration: none; padding: 0.9rem 1.1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); transition: border-color .2s, background .2s; }
+  .clink:hover { border-color: var(--mint-light); background: rgba(189,235,214,0.08); }
+  .clink span:first-child { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--mint-light); min-width: 48px; letter-spacing: 0.06em; }
+  .clink span:last-child { font-size: 0.92rem; }
+
+  footer a { color: var(--mint); text-decoration: none; } footer a:hover { color: var(--coral-ink); }
+  footer { text-align: center; padding: 2.5rem 2rem; line-height: 2; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--dim); font-family: 'DM Mono', monospace; }
+
+  /* reveal (content stays visible if JS is off) */
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .dot { animation: none; }
   }
 
-  /* ── PROJECTS ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.2rem;
+  @media (max-width: 860px) {
+    .about, .contact { grid-template-columns: 1fr; }
+    .projects { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: 1fr 1fr; }
   }
-  .project-card {
-    background: var(--card);
-    border: 0.5px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem 1.6rem;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .project-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-  .project-card:hover::before { opacity: 1; }
-  .project-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-  }
-  .project-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem;
-    margin-bottom: 0.6rem;
-    font-weight: 400;
-  }
-  .project-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
-  .project-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.9rem; }
-  .stack-tag {
-    font-size: 0.68rem;
-    font-family: 'DM Mono', monospace;
-    padding: 2px 8px;
-    border-radius: 3px;
-    background: rgba(79,255,176,0.07);
-    border: 0.5px solid rgba(79,255,176,0.2);
-    color: var(--accent);
-  }
-  .project-link {
-    font-size: 0.78rem;
-    font-family: 'DM Mono', monospace;
-    color: var(--accent2);
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 4px;
-  }
-  .project-link:hover { color: var(--accent); }
-
-  /* ── EXPERIENCE ── */
-  .exp-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 2rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 0.5px solid var(--border);
-    margin-bottom: 2.5rem;
-  }
-  .exp-item:last-child { border-bottom: none; }
-  .exp-meta { text-align: right; }
-  .exp-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); }
-  .exp-company { font-size: 0.85rem; color: var(--accent); margin-top: 4px; }
-  .exp-title { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.7rem; }
-  .exp-bullets { list-style: none; }
-  .exp-bullets li {
-    font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.4rem;
-    padding-left: 1.1rem; position: relative;
-  }
-  .exp-bullets li::before {
-    content: '→';
-    position: absolute; left: 0;
-    color: var(--accent); font-size: 0.75rem;
-  }
-
-  /* ── CONTACT ── */
-  .contact-inner {
-    background: var(--card);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-  .contact-heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  .contact-sub { font-size: 0.9rem; color: var(--muted); }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-item {
-    display: flex; align-items: center; gap: 12px;
-    text-decoration: none;
-    padding: 0.8rem 1rem;
-    border-radius: 6px;
-    border: 0.5px solid var(--border);
-    background: rgba(255,255,255,0.02);
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .contact-item:hover { border-color: var(--accent); background: rgba(79,255,176,0.04); }
-  .contact-icon {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--accent);
-    min-width: 44px;
-    letter-spacing: 0.06em;
-  }
-  .contact-val { font-size: 0.85rem; color: var(--text); }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    border-top: 0.5px solid var(--border);
-  }
-
-  /* ── ANIMATE ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  @media (max-width: 680px) {
-    nav { padding: 1rem 1.2rem; }
-    .nav-links { display: none; }
-    section { padding: 3.5rem 1.2rem; }
-    #hero { padding: 6rem 1.2rem 3rem; }
-    .about-grid, .contact-inner { grid-template-columns: 1fr; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .exp-meta { text-align: left; }
+  @media (max-width: 640px) {
+    nav { padding: 0.9rem 1.2rem; }
+    .status { border-radius: 14px; align-items: flex-start; } .status .dot { margin-top: 6px; }
+    .nav-links li:not(:last-child) { display: none; }
+    .wrap { padding: 0 1.2rem; }
+    section { padding: 4rem 0; }
+    .exp { grid-template-columns: 1fr; gap: 0.5rem; }
+    .skills { grid-template-columns: 1fr; }
+    .contact { padding: 2rem 1.5rem; }
   }
 </style>
 </head>
 <body>
-
-<div class="grid-bg"></div>
-<div class="glow-orb orb1"></div>
-<div class="glow-orb orb2"></div>
+<script>document.documentElement.classList.add('js');</script>
 
 <nav>
-  <a class="nav-logo" href="#">nn_</a>
+  <a class="logo" href="#hero">nn<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
-    <li><a href="#skills">skills</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#experience">experience</a></li>
-    <li><a href="#contact">contact</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a class="nav-cta" href="mailto:neha.nikam.cs@gmail.com">get in touch</a></li>
   </ul>
 </nav>
 
+<main>
+
+<div class="grid-bg"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
 <!-- HERO -->
-<div id="hero" style="position:relative;z-index:1;">
-  <div class="hero-tag">MS in AI · Boston University</div>
-  <h1>Neha<br><em>Nikam</em></h1>
-  <p class="hero-sub">AI engineer bridging 4+ years of production software experience with machine learning — building intelligent systems that actually ship.</p>
-  <div class="hero-ctas">
-    <a class="btn btn-primary" href="#projects">View Projects</a>
-    <a class="btn btn-outline" href="mailto:neha.nikam.cs@gmail.com">Get in Touch</a>
+<div id="hero" class="wrap">
+  <div class="status"><span class="dot"></span>Open to full-time AI Engineering, ML Engineering, Applied AI, and backend roles starting Q1 2027</div>
+  <h1>I build AI agents that are <em>safe to ship.</em></h1>
+  <p class="hero-sub">AI engineer with <strong>4+ years of production backend experience at Barclays</strong>, now finishing an <strong>MS in Artificial Intelligence at Boston University</strong>. I work on agentic systems, LLM applications, and the guardrails that let them run in the real world.</p>
+  <div class="ctas">
+    <a class="btn btn-primary" href="#projects">See my work</a>
+    <a class="btn btn-ghost" href="mailto:neha.nikam.cs@gmail.com">Email me</a>
+    <a class="btn btn-ghost" href="https://linkedin.com/in/nikam2neha" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn btn-ghost" href="https://github.com/nehanik2" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+  <div class="hero-meta">
+    <span><b>MS AI</b> · Boston University, Dec 2026</span>
+    <span><b>4+ yrs</b> · Barclays PLC</span>
+    <span><b>1</b> peer-reviewed publication</span>
+    <span>Boston, MA</span>
   </div>
 </div>
 
 <!-- ABOUT -->
-<section id="about">
-  <p class="section-label">01 / about</p>
-  <h2>Engineer by training,<br>AI practitioner by choice</h2>
-  <div class="about-grid fade-in">
-    <div class="about-text">
-      <p>I'm a Computer Engineering graduate currently pursuing an <strong>MS in Artificial Intelligence at Boston University</strong>. Before that, I spent 4+ years at <strong>Barclays PLC</strong> in Pune, India, building and testing production software at scale.</p>
-      <br>
-      <p>My edge is combining <strong>real engineering discipline</strong> — robust testing, documentation, cross-functional delivery — with hands-on ML research in deep learning, NLP, and neural networks. I'm interested in applied AI that solves real problems, not just demos.</p>
-    </div>
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="stat-num">4+</div>
-        <div class="stat-desc">years at Barclays PLC, Pune</div>
+<section id="about" class="alt">
+  <div class="wrap">
+    <p class="label">01 / about</p>
+    <h2>Production engineer first.<br>AI engineer <em>now.</em></h2>
+    <div class="about reveal">
+      <div>
+        <p>I spent four years at <strong>Barclays</strong> building Java REST APIs, Python automation, and Jenkins CI/CD pipelines for teams across the U.S. and U.K. Banking teaches you that software has to be reliable, testable, and auditable before it ships.</p>
+        <p>I bring that discipline to AI. At <strong>Boston University</strong> I've built multi-agent systems, NLP pipelines, reinforcement learning environments, and LLM applications end to end, from data and modeling through evaluation and deployment.</p>
+        <p>What excites me most is the gap between a working agent demo and an agent a regulated company can trust in production.</p>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">1</div>
-        <div class="stat-desc">peer-reviewed publication</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">MS</div>
-        <div class="stat-desc">AI · Boston University</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">BE</div>
-        <div class="stat-desc">Computer Engineering · SPIT</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <p class="section-label">02 / skills</p>
-  <h2>Technical toolkit</h2>
-  <div class="skills-grid fade-in">
-    <div class="skill-group">
-      <div class="skill-group-title">ML / AI</div>
-      <div class="skill-tags">
-        <span class="tag">PyTorch</span>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">Keras</span>
-        <span class="tag">Siamese Networks</span>
-        <span class="tag">RNN</span>
-        <span class="tag">MaLSTM</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Languages</div>
-      <div class="skill-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Java</span>
-        <span class="tag">C++</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">SQL</span>
-        <span class="tag">R</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Data & Analysis</div>
-      <div class="skill-tags">
-        <span class="tag">Data Extraction</span>
-        <span class="tag">Statistical Analysis</span>
-        <span class="tag">Pattern Recognition</span>
-        <span class="tag">Trend Analysis</span>
-        <span class="tag">Excel (adv.)</span>
-        <span class="tag">MSSQL</span>
-        <span class="tag">MySQL</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Engineering</div>
-      <div class="skill-tags">
-        <span class="tag">Selenium</span>
-        <span class="tag">Cucumber BDD</span>
-        <span class="tag">OOP</span>
-        <span class="tag">Data Structures</span>
-        <span class="tag">Algo Optimisation</span>
-        <span class="tag">Version Control</span>
+      <div class="focus">
+        <h3>Current focus</h3>
+        <ul>
+          <li><span>01</span><div>Agentic &amp; multi-agent systems<small>Orchestration, tool use, LLM-as-judge</small></div></li>
+          <li><span>02</span><div>Runtime guardrails for agents<small>Policy enforcement, escalation, auditability</small></div></li>
+          <li><span>03</span><div>Applied NLP &amp; LLMs<small>Fine-tuning, evaluation, multilingual NLU</small></div></li>
+          <li><span>04</span><div>Production backend<small>APIs, CI/CD, testing at scale</small></div></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -494,198 +289,130 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <p class="section-label">03 / projects</p>
-  <h2>Things I've built</h2>
-  <div id="projects-status" style="font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--muted);margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;">
-    <span id="status-dot" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.2s infinite;"></span>
-    <span id="status-text">Fetching repositories from GitHub…</span>
-  </div>
-  <div class="projects-grid fade-in" id="projects-grid"></div>
-  <!-- pinned / fallback card always shown -->
-  <div style="margin-top:1.2rem;" id="publication-card">
-    <div class="project-card">
-      <div class="project-num" style="color:var(--accent3);">📄 publication</div>
-      <div class="project-title">Easy Verdict – Legal AI Assistant</div>
-      <p class="project-desc">Applied MaLSTM RNN (Siamese network variant) to structure and analyze unstructured legal case data. Co-authored peer-reviewed paper in Grenze International Journal of Engineering and Technology.</p>
-      <div class="project-stack">
-        <span class="stack-tag">Python</span>
-        <span class="stack-tag">MaLSTM</span>
-        <span class="stack-tag">Siamese RNN</span>
-        <span class="stack-tag">NLP</span>
-      </div>
-      <a class="project-link" href="https://bit.ly/BE-Project-Paper-nikam2neha" target="_blank">Read publication ↗</a>
+  <div class="wrap">
+    <p class="label">02 / projects</p>
+    <h2>Selected work</h2>
+    <div class="projects reveal">
+
+      <article class="card featured wide">
+        <span class="kicker spark">★ MIT Bitcoin Hackathon 2026</span>
+        <h3>AgentSwap</h3>
+        <p>A multi-agent system where autonomous LLM agents coordinate a full transaction lifecycle across two blockchains with no human in the loop. An independent LLM arbitrator scores the work against a weighted rubric, and a single cryptographic secret drives settlement on both chains atomically.</p>
+        <div class="stack">
+          <span class="chip">TypeScript</span><span class="chip">Multi-agent LLMs</span><span class="chip">LLM-as-judge</span><span class="chip">Solidity HTLC</span><span class="chip">Lightning Network</span><span class="chip">Docker</span><span class="chip">Vitest</span>
+        </div>
+        <div class="links"><a href="https://github.com/nehanik2/AgentSwap" target="_blank" rel="noopener">View code ↗</a></div>
+      </article>
+
+      <article class="card">
+        <span class="kicker">NLP research</span>
+        <h3>Spanglish Navigator</h3>
+        <p>Three-stage NLU pipeline for code-switched Spanish-English queries: a constraint lexicon mined from the Miami Bangor Corpus, synthetic data generation, and fine-tuned multilingual transformers for intent and slot prediction. Extended with a zero-shot LLM comparison.</p>
+        <div class="metrics">
+          <div class="metric"><b>80.8%</b><small>end-to-end accuracy</small></div>
+          <div class="metric"><b>74%</b><small>intent acc (mBERT)</small></div>
+        </div>
+        <div class="stack"><span class="chip">Python</span><span class="chip">mBERT</span><span class="chip">XLM-RoBERTa</span><span class="chip">Cohere</span></div>
+        <div class="links"><a href="https://github.com/nehanik2/cohere-spanglish-nlu" target="_blank" rel="noopener">View code ↗</a></div>
+      </article>
+
+      <article class="card">
+        <span class="kicker">Reinforcement learning</span>
+        <h3>NetGarden AI Arena</h3>
+        <p>Real-time multiplayer grid world used as a benchmark for progressively smarter agents: heuristic scoring agents, then tabular Q-learning, with LLM-driven agents next. Each phase is a self-contained, Dockerized service.</p>
+        <div class="stack"><span class="chip">Node.js</span><span class="chip">Socket.io</span><span class="chip">Q-learning</span><span class="chip">SQLite</span><span class="chip">Docker</span></div>
+        <div class="links"><a href="https://github.com/nehanik2/NetGarden-AI-Arena" target="_blank" rel="noopener">View code ↗</a></div>
+      </article>
+
+      <article class="card wide">
+        <span class="kicker spark">Peer-reviewed publication</span>
+        <h3>Easy Verdict</h3>
+        <p>Legal text similarity using a MaLSTM Siamese recurrent network to structure and compare unstructured case data. Published in the Grenze International Journal of Engineering and Technology (Vol. 5.2, pp. 17–23).</p>
+        <div class="stack"><span class="chip">Python</span><span class="chip">MaLSTM</span><span class="chip">Siamese RNN</span><span class="chip">NLP</span></div>
+        <div class="links"><a href="https://bit.ly/BE-Project-Paper-nikam2neha" target="_blank" rel="noopener">Read paper ↗</a></div>
+      </article>
+
     </div>
+    <p class="more">More on <a href="https://github.com/nehanik2" target="_blank" rel="noopener">github.com/nehanik2 ↗</a></p>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <p class="section-label">04 / experience</p>
-  <h2>Where I've worked</h2>
-  <div class="fade-in">
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-date">2025 – Present</div>
-        <div class="exp-company">Boston University</div>
+<section id="experience" class="alt">
+  <div class="wrap">
+    <p class="label">03 / experience</p>
+    <h2>Where I've worked</h2>
+    <div class="reveal">
+      <div class="exp">
+        <div><div class="exp-date">2025 – Dec 2026</div><div class="exp-org">Boston University</div></div>
+        <div>
+          <h3>M.S. in Artificial Intelligence</h3>
+          <ul>
+            <li>Coursework in deep learning, NLP, statistical machine learning, and database systems</li>
+            <li>Built agentic, NLP, and reinforcement learning projects end to end in Python and TypeScript</li>
+            <li>Alumni &amp; Partnerships Co-Coordinator, Graduate Women in Science and Engineering (GWiSE)</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <div class="exp-title">MS in Artificial Intelligence</div>
-        <ul class="exp-bullets">
-          <li>Coursework in deep learning, NLP, statistical ML, and algorithm design</li>
-          <li>Applying PyTorch, TensorFlow, and Keras to research and course projects</li>
-          <li>Focused on production-ready AI systems bridging theory and deployment</li>
-        </ul>
+      <div class="exp">
+        <div><div class="exp-date">Jul 2019 – Mar 2024</div><div class="exp-org">Barclays PLC</div></div>
+        <div>
+          <h3>Software Engineer (BA3) · Pune, India</h3>
+          <ul>
+            <li>Built and maintained Java REST APIs and Python automation for banking applications backed by MS SQL</li>
+            <li>Ran Jenkins CI/CD pipelines and owned Selenium and Cucumber BDD test frameworks</li>
+            <li>Delivered features in Agile/Scrum with cross-functional teams across the U.S. and U.K.</li>
+            <li>Offered promotion to BA4; chose to pursue the M.S. in AI instead</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-date">Jul 2019 – Mar 2024</div>
-        <div class="exp-company">Barclays PLC</div>
+      <div class="exp">
+        <div><div class="exp-date">Undergraduate</div><div class="exp-org">SPIT</div></div>
+        <div>
+          <h3>B.E. in Computer Engineering</h3>
+          <ul><li>Final-year project Easy Verdict published in a peer-reviewed journal</li></ul>
+        </div>
       </div>
-      <div>
-        <div class="exp-title">Software Engineer – BA3 · Pune, India</div>
-        <ul class="exp-bullets">
-          <li>Debugged and optimized code across Java, Python, and C++ in a high-stakes financial environment</li>
-          <li>Built and maintained automated testing frameworks with Selenium, TypeScript, and Cucumber BDD</li>
-          <li>Collaborated with cross-functional stakeholders across global teams on data-critical features</li>
-          <li>Maintained detailed technical documentation and version control practices for team continuity</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-label">05 / contact</p>
-  <div class="contact-inner fade-in">
-    <div>
-      <div class="contact-heading">Let's build<br><em style="font-style:italic;color:var(--accent);">something</em></div>
-      <p class="contact-sub">Open to research collaborations, internships, and full-time roles in AI/ML engineering. Based in Boston, MA.</p>
-    </div>
-    <div class="contact-links">
-      <a class="contact-item" href="mailto:neha.nikam.cs@gmail.com">
-        <span class="contact-icon">email</span>
-        <span class="contact-val">neha.nikam.cs@gmail.com</span>
-      </a>
-      <a class="contact-item" href="https://linkedin.com/in/nikam2neha" target="_blank">
-        <span class="contact-icon">in</span>
-        <span class="contact-val">linkedin.com/in/nikam2neha</span>
-      </a>
-      <a class="contact-item" href="https://github.com/nehanik2" target="_blank">
-        <span class="contact-icon">gh</span>
-        <span class="contact-val">github.com/nehanik2</span>
-      </a>
-      <a class="contact-item" href="tel:6177990179">
-        <span class="contact-icon">tel</span>
-        <span class="contact-val">(617) 799-0179</span>
-      </a>
     </div>
   </div>
 </section>
 
-<footer>built by neha nikam · 2026 · boston, ma</footer>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <p class="label">04 / skills</p>
+    <h2>Toolkit</h2>
+    <div class="skills reveal">
+      <div class="skill"><h3>AI / ML</h3><div class="tags">
+        <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Hugging Face</span><span class="tag">LLM APIs</span><span class="tag">Multi-agent systems</span><span class="tag">RL</span><span class="tag">NLP</span>
+      </div></div>
+      <div class="skill"><h3>Languages</h3><div class="tags">
+        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">TypeScript</span><span class="tag">SQL</span><span class="tag">C++</span><span class="tag">Solidity</span><span class="tag">R</span>
+      </div></div>
+      <div class="skill"><h3>Backend &amp; Infra</h3><div class="tags">
+        <span class="tag">REST APIs</span><span class="tag">Node.js</span><span class="tag">Docker</span><span class="tag">Jenkins CI/CD</span><span class="tag">MS SQL</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">Git</span>
+      </div></div>
+      <div class="skill"><h3>Quality</h3><div class="tags">
+        <span class="tag">Selenium</span><span class="tag">Cucumber BDD</span><span class="tag">Vitest</span><span class="tag">LLM evals</span><span class="tag">Agile / Scrum</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><a href="mailto:neha.nikam.cs@gmail.com">email</a> · <a href="https://linkedin.com/in/nikam2neha" target="_blank" rel="noopener">linkedin</a> · <a href="https://github.com/nehanik2" target="_blank" rel="noopener">github</a><br>neha nikam · boston, ma · <span id="yr">2026</span></footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Language color map
-  const langColors = {
-    Python: '#3572A5', JavaScript: '#f1e05a', TypeScript: '#3178c6',
-    Java: '#b07219', 'C++': '#f34b7d', R: '#198CE7', Jupyter: '#DA5B0B',
-    HTML: '#e34c26', CSS: '#563d7c', Shell: '#89e051'
-  };
-
-  async function getCommitCount(repo) {
-    try {
-      const r = await fetch(
-        `https://api.github.com/repos/nehanik2/${repo}/commits?per_page=1`,
-        { headers: { Accept: 'application/vnd.github.v3+json' } }
-      );
-      const link = r.headers.get('Link') || '';
-      const m = link.match(/page=(\d+)>; rel="last"/);
-      if (m) return parseInt(m[1]);
-      const data = await r.json();
-      return Array.isArray(data) ? data.length : 0;
-    } catch { return 0; }
-  }
-
-  async function loadGitHubProjects() {
-    const grid = document.getElementById('projects-grid');
-    const statusText = document.getElementById('status-text');
-    const statusDot = document.getElementById('status-dot');
-
-    try {
-      const res = await fetch('https://api.github.com/users/nehanik2/repos?per_page=100&sort=updated', {
-        headers: { Accept: 'application/vnd.github.v3+json' }
-      });
-      if (!res.ok) throw new Error('GitHub API error');
-      const repos = await res.json();
-
-      const publicRepos = repos.filter(r => !r.fork && !r.private);
-      statusText.textContent = `Checking ${publicRepos.length} repos for contributions…`;
-
-      const withCommits = await Promise.all(
-        publicRepos.map(async (repo) => {
-          const count = await getCommitCount(repo.name);
-          return { ...repo, commitCount: count };
-        })
-      );
-
-      const filtered = withCommits
-        .filter(r => r.commitCount > 2)
-        .sort((a, b) => b.commitCount - a.commitCount);
-
-      if (filtered.length === 0) {
-        statusText.textContent = 'No repos with >2 commits found yet — check back soon.';
-        statusDot.style.background = 'var(--muted)';
-        statusDot.style.animation = 'none';
-        return;
-      }
-
-      statusDot.style.background = 'var(--accent)';
-      statusDot.style.animation = 'none';
-      statusText.textContent = `${filtered.length} repos with 3+ commits · live from GitHub`;
-
-      filtered.forEach((repo, i) => {
-        const lang = repo.language || '';
-        const color = langColors[lang] || '#7a8299';
-        const desc = repo.description || 'No description provided.';
-        const stars = repo.stargazers_count;
-        const updated = new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.innerHTML = `
-          <div class="project-num">0${i + 1}</div>
-          <div class="project-title">${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</div>
-          <p class="project-desc">${desc}</p>
-          <div class="project-stack">
-            ${lang ? `<span class="stack-tag" style="border-color:${color}33;color:${color};background:${color}11;">${lang}</span>` : ''}
-            <span class="stack-tag">${repo.commitCount} commits</span>
-            ${stars > 0 ? `<span class="stack-tag">★ ${stars}</span>` : ''}
-            <span class="stack-tag" style="color:var(--muted);border-color:transparent;">updated ${updated}</span>
-          </div>
-          <a class="project-link" href="${repo.html_url}" target="_blank">View on GitHub ↗</a>
-        `;
-        grid.appendChild(card);
-      });
-
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    } catch (err) {
-      statusDot.style.background = '#f09595';
-      statusDot.style.animation = 'none';
-      statusText.textContent = 'Could not load GitHub repos — check your connection.';
-    }
-  }
-
-  loadGitHubProjects();
+  const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
 </script>
 </body>
 </html>
